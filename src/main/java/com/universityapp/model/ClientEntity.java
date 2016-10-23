@@ -1,0 +1,55 @@
+package com.universityapp.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Created by Monika on 10/22/2016.
+ */
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "Client")
+/**
+ * Client entity class
+ * Client can ...
+ * */
+public class ClientEntity extends AbstractEntity{
+    @Column
+    @NotNull
+    @Length(max = 30)
+    private String name;
+
+    @Column
+    @NotNull
+    @Length(max = 50)
+    private String surname;
+
+    @Column
+    private Long phone;
+
+    @Column
+    private String email;
+
+    @Column(name = "birth_date")
+    private Date birthDate;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "card_id")
+    private CardEntity card;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "clients")
+    private Set<TeamEntity> teams = new HashSet<>();
+
+}
