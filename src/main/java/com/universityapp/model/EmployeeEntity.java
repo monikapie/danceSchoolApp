@@ -21,7 +21,7 @@ import java.util.Set;
 @Table(name = "Employee")
 /**
  * Empolyee entity class
- * Employee ..
+ * Employee can lead many courses and is connected to only one contract.
  * */
 public class EmployeeEntity extends AbstractEntity{
     @Column(name = "id_supervisor")

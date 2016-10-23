@@ -8,6 +8,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
+
+/**
+ * Created by Monika on 10/22/2016.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,8 +19,10 @@ import java.util.Set;
 @Entity
 @Table(name = "Classroom")
 /**
- * Created by Monika on 10/22/2016.
- */
+ * Classroom entity class
+ * Classroom can be assign to many plan record.
+ * TODO create validation for plan record checking if room is not used at this time by another plan record.
+ * */
 public class ClassroomEntity extends AbstractEntity{
 
     @Column

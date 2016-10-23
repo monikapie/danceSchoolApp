@@ -20,6 +20,10 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "Team")
+/**
+ * Team entity class.
+ * Team can consists of many members and can be connected only to one course.
+ * */
 public class TeamEntity extends AbstractEntity{
     @Column(name = "stage")
     @Length(max = 30)

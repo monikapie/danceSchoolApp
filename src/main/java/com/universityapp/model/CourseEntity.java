@@ -19,6 +19,12 @@ package com.universityapp.model;
 @AllArgsConstructor
 @Entity
 @Table(name = "Course")
+/**
+ * Course entity class.
+ * Course can be connected with one employee - trainer
+ * and can be assigned to many teams(which are on different
+ * dance class level
+ * */
 public class CourseEntity extends AbstractEntity{
     @Column
     @NotNull

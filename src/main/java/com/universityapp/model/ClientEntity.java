@@ -23,7 +23,7 @@ import java.util.Set;
 @Table(name = "Client")
 /**
  * Client entity class
- * Client can ...
+ * Client can be member of many dance teams and can have only one membership card.
  * */
 public class ClientEntity extends AbstractEntity{
     @Column

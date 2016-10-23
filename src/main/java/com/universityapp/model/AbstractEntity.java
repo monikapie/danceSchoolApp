@@ -16,6 +16,9 @@ import javax.persistence.MappedSuperclass;
 @Getter
 @Setter
 @NoArgsConstructor
+/*
+* Abstract class with id  generator.
+* **/
 public class AbstractEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

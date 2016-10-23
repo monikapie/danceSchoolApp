@@ -20,6 +20,11 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "Plan")
+/**
+ * Plan entity class.
+ * Plan record can be connected with one classroom
+ * and can be assigned to one team.
+ * */
 public class PlanEntity extends AbstractEntity{
 
     @Column(name = "day_of_week")

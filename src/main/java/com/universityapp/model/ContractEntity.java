@@ -20,6 +20,12 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "Contract")
+/**
+ * Contract entity class
+ * Contract can be connected with many employees
+ * for example in situation when many employees
+ * sign agreement at the same time.
+ * */
 public class ContractEntity extends AbstractEntity{
     @Column
     private String type;
