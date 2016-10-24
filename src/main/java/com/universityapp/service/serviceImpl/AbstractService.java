@@ -37,6 +37,11 @@ public class AbstractService <T extends AbstractEntity> implements ServiceInterf
     }
 
     @Transactional
+    public void deleteAll() {
+        repository.deleteAll();
+    }
+
+    @Transactional
     public T findById(Long id) {
         return repository.findOne(id);
     }

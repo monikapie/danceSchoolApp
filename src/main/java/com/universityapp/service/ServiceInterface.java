@@ -12,6 +12,7 @@ public interface ServiceInterface <T extends AbstractEntity>{
     public T save(@NotNull final T entity) ;
     public Collection<T> getList();
     public void delete(T entity);
+    public void deleteAll();
     public T findById(Long id);
     public T update(T entity);
 }

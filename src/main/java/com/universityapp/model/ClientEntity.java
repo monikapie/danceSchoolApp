@@ -52,4 +52,17 @@ public class ClientEntity extends AbstractEntity{
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "clients")
     private Set<TeamEntity> teams = new HashSet<>();
 
+    public ClientEntity(String name, String surname){
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public ClientEntity(String name, String surname, Long phone, String email, Date birthDate, CardEntity card) {
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.card = card;
+    }
 }
