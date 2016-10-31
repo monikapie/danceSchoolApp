@@ -49,6 +49,10 @@ public class ClientEntity extends AbstractEntity{
     @JoinColumn(name = "card_id")
     private CardEntity card;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "clients")
     private Set<TeamEntity> teams = new HashSet<>();
 

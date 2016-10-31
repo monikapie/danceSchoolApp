@@ -1,14 +1,14 @@
 package com.universityapp.model;
 
-        import lombok.AllArgsConstructor;
-        import lombok.Getter;
-        import lombok.NoArgsConstructor;
-        import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-        import javax.persistence.*;
-        import javax.validation.constraints.NotNull;
-        import java.util.HashSet;
-        import java.util.Set;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Monika on 10/22/2016.

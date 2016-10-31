@@ -1,12 +1,8 @@
 package com.universityapp;
 
 import com.github.javafaker.Faker;
-import com.universityapp.model.ClientEntity;
-import com.universityapp.service.ClientService;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication

@@ -52,6 +52,10 @@ public class EmployeeEntity extends AbstractEntity{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "trainer")
     private Set<CourseEntity> courses;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
     public EmployeeEntity(String name, String surname, String position){
         this.name = name;
         this.surname = surname;
