@@ -43,6 +43,8 @@ public class ContractEntity extends AbstractEntity{
     @Column
     private String position;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contract")
-    private Set<EmployeeEntity> employees;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id")
+    private EmployeeEntity employee;
+
 }

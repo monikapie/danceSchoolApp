@@ -33,7 +33,8 @@ public class CardEntity extends AbstractEntity{
     @NotNull
     private Date endDate;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id")
     private ClientEntity client;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -45,9 +45,8 @@ public class EmployeeEntity extends AbstractEntity{
     @Length(max = 30)
     private String position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contract_id")
-    private ContractEntity contract;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+    private Set<ContractEntity> contracts;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "trainer")
     private Set<CourseEntity> courses;

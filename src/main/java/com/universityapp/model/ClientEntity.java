@@ -45,8 +45,7 @@ public class ClientEntity extends AbstractEntity{
     @Column(name = "birth_date")
     private Date birthDate;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "card_id")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "client", cascade = CascadeType.ALL)
     private CardEntity card;
 
     @OneToOne(fetch = FetchType.LAZY)

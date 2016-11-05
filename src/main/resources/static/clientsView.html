@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Hello AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="js/clients.js"></script>
+</head>
+
+<body>
+<div ng-controller="customersCtrl">
+    <ul>
+        <li ng-repeat="x in names">
+            {{x.id}}
+            {{x.name}}
+        </li>
+    </ul>
+</div>
+</body>
+</html>
