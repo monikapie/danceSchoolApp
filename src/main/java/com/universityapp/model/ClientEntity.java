@@ -8,6 +8,8 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +27,7 @@ import java.util.Set;
  * Client entity class
  * Client can be member of many dance teams and can have only one membership card.
  * */
-public class ClientEntity extends AbstractEntity{
+public class ClientEntity extends AbstractEntity implements Serializable{
     @Column
     @NotNull
     @Length(max = 30)

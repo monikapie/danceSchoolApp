@@ -36,8 +36,8 @@ public class ClientController{
         clientService.save(input);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
-    public void updateClient(@RequestBody ClientEntity input){
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public void updateClient(@PathVariable(value = "id") Long id, @RequestBody ClientEntity input){
         clientService.save(input);
     }
 

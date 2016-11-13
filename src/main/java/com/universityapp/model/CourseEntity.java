@@ -33,12 +33,20 @@ public class CourseEntity extends AbstractEntity{
     @Column
     private Long cost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trainer_id")
-    @NotNull
-    private EmployeeEntity trainer;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "trainer_id")
+//    @NotNull
+//    private EmployeeEntity trainer;
+
+    @Column(name = "trainer_id")
+    private Long trainerId;
 
     @OneToMany(mappedBy = "course")
     private Set<TeamEntity> teams = new HashSet<>();
 
+    public CourseEntity(String type, Long cost, Long trainer){
+        this.type = type;
+        this.cost = cost;
+        this.trainerId = trainer;
+    }
 }

@@ -1,5 +1,6 @@
 package com.universityapp.model;
 
+import com.sun.javafx.beans.IDProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Employee")
 /**
- * Empolyee entity class
+ * Employee entity class
  * Employee can lead many courses and is connected to only one contract.
  * */
 public class EmployeeEntity extends AbstractEntity{
@@ -48,7 +49,7 @@ public class EmployeeEntity extends AbstractEntity{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
     private Set<ContractEntity> contracts;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "trainer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "trainerId")
     private Set<CourseEntity> courses;
 
     @OneToOne(fetch = FetchType.LAZY)
