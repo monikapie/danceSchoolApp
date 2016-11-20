@@ -43,7 +43,7 @@ public class RestTemplateService {
         final String uri = "http://localhost:8080/clients";
         ClientEntity clientEntity = newClient;
         RestTemplate restTemplate = new RestTemplate();
-        ClientEntity result = restTemplate.postForObject( uri, clientEntity, ClientEntity.class);
+        restTemplate.postForObject( uri, clientEntity, ClientEntity.class);
     }
 
     public static void addCourse(CourseEntity newCourse){

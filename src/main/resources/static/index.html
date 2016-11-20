@@ -1,0 +1,74 @@
+<html ng-app="crudApp">
+<head>
+    <title>AngularJS Directive Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- Include jQuery library -->
+    <script src="js/jQuery/jquery-3.1.1.min.js"></script>
+    <!-- Include AngularJS library -->
+    <script src="lib/angular/angular.min.js"></script>
+    <!-- Include Bootstrap Javascript -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container wrapper" ng-controller="DbController">
+    <h1 class="text-center">DanceSchoolApp</h1>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <div class="alert alert-default navbar-brand search-box">
+                <button class="btn btn-primary" ng-show="show_form" ng-click="formToggle()">Add Client <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            </div>
+            <div class="alert alert-default input-group search-box">
+<span class="input-group-btn">
+<input type="text" class="form-control" placeholder="Search Clients Details Into Database..." ng-model="search_query">
+</span>
+            </div>
+        </div>
+    </nav>
+    <div class="col-md-6 col-md-offset-3">
+
+        <!-- Include form template which is used to insert data into database -->
+        <div ng-include src="'templates/form.html'"></div>
+
+        <!-- Include form template which is used to edit and update data into database -->
+        <div ng-include src="'templates/editForm.html'"></div>
+    </div>
+    <div class="clearfix"></div>
+
+    <!-- Table to show employee detalis -->
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>Client ID</th>
+                <th>Client Name</th>
+                <th>Client Surname</th>
+                <th>Phone</th>
+                <th>Email Address</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="detail in details| filter:search_query">
+                <td>
+                    <span>{{detail.id}}</span></td>
+                <td>{{detail.name}}</td>
+                <td>{{detail.surname}}</td>
+                <td>{{detail.phone}}</td>
+                <td>{{detail.email}}</td>
+                <td>
+                    <button class="btn btn-warning" ng-click="editInfo(detail)" title="Edit"><span class="glyphicon glyphicon-edit"></span></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" ng-click="deleteInfo(detail)" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+<!-- Include controller -->
+<script src="js/clients.js"></script>
+</body>
+</html>

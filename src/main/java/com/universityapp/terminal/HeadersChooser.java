@@ -3,6 +3,7 @@ package com.universityapp.terminal;
 import com.universityapp.model.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class HeadersChooser {
     public static void showMainView(Scanner sc) throws IOException {
         ASCIIArt.createHeader("DANCE.SCHOOL", 12);
         System.out.println(".............Main menu..............." +
-                "\n1. Courses " + "\n" + "2. Clients" + "\n" + "3. Employees");
+                "\n1. Courses " + "\n" + "2. Clients\n3. Employees\n");
         System.out.println("Enter number to choose: ");
         if(sc.hasNext()) {
             switch (sc.next()){

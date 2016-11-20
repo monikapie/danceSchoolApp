@@ -15,16 +15,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Scanner;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.universityapp")
 public class DanceSchoolAppApplication {
 	private final Faker faker = new Faker();
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, URISyntaxException {
 		SpringApplication.run(DanceSchoolAppApplication.class, args);
-		Scanner sc = new Scanner(System.in);
-		HeadersChooser.showMainView(sc);
+		//Scanner sc = new Scanner(System.in);
+		//HeadersChooser.showMainView(sc);
 	}
 
 //	@Bean
