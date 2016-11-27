@@ -2,8 +2,10 @@ package com.universityapp;
 
 import com.github.javafaker.Faker;
 import com.universityapp.enums.PositionType;
+import com.universityapp.model.ClientEntity;
 import com.universityapp.model.CourseEntity;
 import com.universityapp.model.EmployeeEntity;
+import com.universityapp.service.ClientService;
 import com.universityapp.service.CourseService;
 import com.universityapp.service.EmployeeService;
 import com.universityapp.terminal.HeadersChooser;
@@ -29,7 +31,7 @@ public class DanceSchoolAppApplication {
 	}
 
 //	@Bean
-//	public CommandLineRunner initializeDb(CourseService service, EmployeeService serviceEmp) {
+//	public CommandLineRunner initializeDb(CourseService service, ClientService serviceEmp) {
 ////		return (args) -> {
 ////			service.deleteAll();
 ////			Long cost = Long.valueOf(40);
@@ -39,12 +41,12 @@ public class DanceSchoolAppApplication {
 ////				service.save(new CourseEntity(faker.lorem().word(),cost,trainerId));
 ////			}
 ////		};
-////		return (args) -> {
-////			//Insert some random clients
-////			for (int i = 0; i < 10; i++) {
-////				serviceEmp.save(new EmployeeEntity(faker.lorem().word(),faker.lorem().word(), PositionType.TEACHER.name()));
-////			}
-////		};
+//		return (args) -> {
+//			//Insert some random clients
+//			for (int i = 0; i < 10; i++) {
+//				serviceEmp.save(new ClientEntity(faker.lorem().word(),faker.lorem().word()));
+//			}
+//		};
 //	}
 
 }
