@@ -45,68 +45,71 @@
 </div>
 <div class="container wrapper" ng-controller="DbController">
     <h1 class="text-center"><img id="logo" src="dance.jpg"/></h1>
-        <div>
-            <div id="select" layout="row" layout-align="center center" style="width:200%;">
-                <md-select  ng-change="selectChanged()" ng-model="tables" placeholder="Table" class="md-no-underline" style="width:200%;">
-                    <md-option value="clients">Clients</md-option>
-                    <md-option value="employees">Employees</md-option>
-                    <md-option value="courses">Courses</md-option>
-                </md-select>
-                <button ng-click="selectChanged()" class="btn btn-warning">Click to choose</button>
-            </div>
-            <nav class="navbar navbar-default">
-                <div class="navbar-header">
-                    <div class="alert alert-default navbar-brand search-box">
-                        <button class="btn btn-primary"  ng-click="addInfo()">Add Client <span class="glyphicon glyphicon-plus"></span></button>
-                    </div>
-                    <div class="alert alert-default input-group search-box">
-            <span class="input-group-btn">
-                <input type="text" class="form-control" placeholder="Search Clients Details Into Database..." ng-model="search_query">
-            </span>
-                    </div>
+    <div>
+        <div id="select" layout="row" layout-align="center center" style="width:200%;">
+            <md-select ng-change="selectChanged()" ng-model="tables" placeholder="Table" class="md-no-underline"
+                       style="width:200%;">
+                <md-option value="clients">Clients</md-option>
+                <md-option value="employees">Employees</md-option>
+                <md-option value="courses">Courses</md-option>
+            </md-select>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <div class="alert alert-default navbar-brand search-box">
+                    <button class="btn btn-primary" ng-click="addInfo()">Add Client <span class="glyphicon glyphicon-plus"></span></button>
                 </div>
-            </nav>
-            <div class="col-md-6 col-md-offset-3">
-
-                <!-- Include form template which is used to insert data into database -->
-                <div ng-include src="'templates/empForm.html'"></div>
-
-                <!-- Include form template which is used to edit and update data into database -->
-                <div ng-include src="'templates/editForm.html'"></div>
-
-            </div>
-            <div class="clearfix"></div>
-            <div></div>
-            <!-- Table to show employee detalis -->
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <tr>
-                        <th>Client ID</th>
-                        <th>Client Name</th>
-                        <th>Client Surname</th>
-                        <th>Phone</th>
-                        <th>Email Address</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr ng-repeat="detail in details| filter:search_query">
-                        <td><span>{{detail.id}}</span></td>
-                        <td>{{detail.name}}</td>
-                        <td>{{detail.surname}}</td>
-                        <td>{{detail.phone}}</td>
-                        <td>{{detail.email}}</td>
-                        <td>
-                            <button class="btn btn-warning" ng-click="editInfo(detail)" title="Edit"><span class="glyphicon glyphicon-edit"></span></button>
-                            <button class="btn btn-danger" title="Delete" ng-click="deleteInfo(detail)"><span class="glyphicon glyphicon-trash"></span></button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="navbar navbar-default navbar-fixed-bottom">
-                <div class="container">
-                    <p class="navbar-text pull-left">2016 Monika Pietyszuk</p>
+                <div class="alert alert-default input-group search-box">
+                        <span class="input-group-btn">
+                            <input type="text" class="form-control"
+                                   placeholder="Search Clients Details Into Database..." ng-model="search_query">
+                        </span>
                 </div>
             </div>
+        </nav>
+        <div class="col-md-6 col-md-offset-3">
+
+            <!-- Include form template which is used to insert data into database -->
+            <div ng-include src="'templates/empForm.html'"></div>
+
+            <!-- Include form template which is used to edit and update data into database -->
+            <div ng-include src="'templates/editForm.html'"></div>
+
+        </div>
+        <div class="clearfix"></div>
+        <!-- Table to show employee detalis -->
+        <div class="table-responsive" id="clients-table" hidden>
+            <table class="table table-hover">
+                <tr>
+                    <th>Client ID</th>
+                    <th>Client Name</th>
+                    <th>Client Surname</th>
+                    <th>Phone</th>
+                    <th>Email Address</th>
+                    <th></th><th></th>
+                </tr>
+                <tr ng-repeat="detail in details| filter:search_query">
+                    <td><span>{{detail.id}}</span></td>
+                    <td>{{detail.name}}</td>
+                    <td>{{detail.surname}}</td>
+                    <td>{{detail.phone}}</td>
+                    <td>{{detail.email}}</td>
+                    <td>
+                        <button class="btn btn-warning" ng-click="editInfo(detail)" title="Edit"><span
+                                class="glyphicon glyphicon-edit"></span></button>
+                        <button class="btn btn-danger" title="Delete" ng-click="deleteInfo(detail)"><span
+                                class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="navbar navbar-default navbar-bottom">
+            <div class="container">
+                <p class="navbar-text pull-left">2016 Monika Pietyszuk</p>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Include controller -->
 <script src="js/clients.js"></script>
 </body>
