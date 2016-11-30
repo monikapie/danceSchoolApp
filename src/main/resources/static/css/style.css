@@ -136,4 +136,6 @@ section{
 
 #logo{
     margin-bottom: 30px;
+    width: 60%;
+    height: auto;
 }

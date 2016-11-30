@@ -56,9 +56,10 @@ public class EmployeeEntity extends AbstractEntity{
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    public EmployeeEntity(String name, String surname, String position){
+    public EmployeeEntity(String name, String surname, String position, Long phone){
         this.name = name;
         this.surname = surname;
         this.position = position;
+        this.phone = phone;
     }
 }

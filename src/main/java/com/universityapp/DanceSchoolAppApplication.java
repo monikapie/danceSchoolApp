@@ -47,7 +47,7 @@ public class DanceSchoolAppApplication {
 //				serviceEmp.save(new ClientEntity(faker.lorem().word(),faker.lorem().word()));
 //			}
 //		};
-//	}
+////	}
 
 }
 

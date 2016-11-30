@@ -27,12 +27,12 @@ public class EmployeeController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void addClient(@RequestBody EmployeeEntity input){
+    public void addEmployee(@RequestBody EmployeeEntity input){
         employeeService.save(input);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public void updateClient(@PathVariable(value = "id") Long id, @RequestBody EmployeeEntity input){
+    public void updateEmployee(@PathVariable(value = "id") Long id, @RequestBody EmployeeEntity input){
         employeeService.save(input);
     }
 

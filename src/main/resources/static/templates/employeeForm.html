@@ -1,0 +1,51 @@
+<div id="employees-table" hidden>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <div class="alert alert-default navbar-brand search-box">
+                <button class="btn btn-primary" ng-click="showAdvancedEmployee($event)">Add Employee <span class="glyphicon glyphicon-plus"></span></button>
+            </div>
+            <div class="alert alert-default input-group search-box">
+                        <span class="input-group-btn">
+                            <input type="text" class="form-control"
+                                   placeholder="Search Clients Details Into Database..." ng-model="search_query">
+                        </span>
+            </div>
+        </div>
+    </nav>
+    <div class="col-md-6 col-md-offset-3">
+
+        <!-- Include form template which is used to insert data into database -->
+        <!--<div ng-include src="'templates/employeeCreateForm.html'"></div>-->
+
+        <!-- Include form template which is used to edit and update data into database -->
+        <div ng-include src="'templates/editForm.html'"></div>
+
+    </div>
+    <div class="clearfix"></div>
+    <!-- Table to show clients detalis -->
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Employee Surname</th>
+                <th>Phone</th>
+                <th>Position</th>
+                <th></th><th></th>
+            </tr>
+            <tr ng-repeat="detail2 in details2| filter:search_query">
+                <td><span>{{detail2.id}}</span></td>
+                <td>{{detail2.name}}</td>
+                <td>{{detail2.surname}}</td>
+                <td>{{detail2.phone}}</td>
+                <td>{{detail2.position}}</td>
+                <td>
+                    <button class="btn btn-warning" ng-click="editInfo(detail)" title="Edit"><span
+                            class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-danger" title="Delete" ng-click="deleteEmployeeInfo(detail2)"><span
+                            class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
