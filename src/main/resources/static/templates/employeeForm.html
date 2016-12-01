@@ -5,10 +5,10 @@
                 <button class="btn btn-primary" ng-click="showAdvancedEmployee($event)">Add Employee <span class="glyphicon glyphicon-plus"></span></button>
             </div>
             <div class="alert alert-default input-group search-box">
-                        <span class="input-group-btn">
-                            <input type="text" class="form-control"
-                                   placeholder="Search Clients Details Into Database..." ng-model="search_query">
-                        </span>
+                <span class="input-group-btn">
+                    <input type="text" class="form-control"
+                           placeholder="Search Clients Details Into Database..." ng-model="search_query">
+                </span>
             </div>
         </div>
     </nav>
@@ -18,7 +18,7 @@
         <!--<div ng-include src="'templates/employeeCreateForm.html'"></div>-->
 
         <!-- Include form template which is used to edit and update data into database -->
-        <div ng-include src="'templates/editForm.html'"></div>
+        <!--<div ng-include src="'templates/editForm.html'"></div>-->
 
     </div>
     <div class="clearfix"></div>
@@ -40,7 +40,7 @@
                 <td>{{detail2.phone}}</td>
                 <td>{{detail2.position}}</td>
                 <td>
-                    <button class="btn btn-warning" ng-click="editInfo(detail)" title="Edit"><span
+                    <button class="btn btn-warning" ng-click="showUpdateEmployee($event,detail2)" title="Edit"><span
                             class="glyphicon glyphicon-edit"></span></button>
                     <button class="btn btn-danger" title="Delete" ng-click="deleteEmployeeInfo(detail2)"><span
                             class="glyphicon glyphicon-trash"></span></button>

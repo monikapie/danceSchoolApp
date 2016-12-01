@@ -1,0 +1,37 @@
+<!-- Form used to update entries of employee in database -->
+<md-dialog aria-label="Update Employee Details Into Database">
+    <form ng-cloak class="form-horizontal alert alert-warning" name="employeeEditForm" id="employeeEditForm" ng-submit="UpdateEmployeeInfo()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3 class="text-center">Update Employee Details Into Database</h3>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()" aria-label="Close"></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div class="form-group">
+                    <label for="Name">Name:</label>
+                    <input type="text" class="form-control" ng-model="modal.currentUser.name" value="{{modal.currentUser.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="Surname">Surname:</label>
+                    <input type="text" class="form-control" ng-model="modal.currentUser.surname" value="{{modal.currentUser.surname}}">
+                </div>
+                <div class="form-group">
+                    <label for="Position">Position:</label>
+                    <input type="text" class="form-control" ng-model="modal.currentUser.position" value="{{modal.currentUser.position}}">
+                </div>
+                <div class="form-group">
+                    <label for="Phone">Phone:</label>
+                    <input type="text" class="form-control" ng-model="modal.currentUser.phone" value="{{modal.currentUser.phone}}">
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" class="md-dialog-content">
+            <div class="form-group">
+                <button class="btn btn-warning" ng-disabled="employeeEditForm.$invalid">Update</button>
+            </div>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

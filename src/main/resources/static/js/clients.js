@@ -30,9 +30,9 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
     $scope.insertEmployeeInfo = function (info) {
         $http.post('/employees', {
             "name": info.name,
-                "surname": info.surname,
-                "position": info.position,
-                "phone": info.phone
+            "surname": info.surname,
+            "position": info.position,
+            "phone": info.phone
             }).success(function (data) {
                 $mdDialog.hide();
             });
@@ -64,23 +64,83 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
          })
     };
 
+    $scope.showUpdateEmployee = function(ev, currentUser) {
+            $mdDialog.show({
+              controller: function ($mdDialog, $scope, $http) {
+                              var vm = this;
+                              vm.currentUser = {};
+                              vm.currentUser = currentUser;  //your task object from the ng-repeat
+
+                              $scope.hide = function () {
+                                  $mdDialog.hide();
+                              };
+                              $scope.cancel = function () {
+                                  $mdDialog.cancel();
+                              };
+                              $scope.UpdateEmployeeInfo = function () {
+                                    $http.post('/employees', {
+                                        "id": currentUser.id,
+                                        "name": currentUser.name,
+                                        "surname": currentUser.surname,
+                                        "position": currentUser.position,
+                                        "phone": currentUser.phone
+                                    }).success(function (data) {
+                                        $mdDialog.hide();
+                                    });
+                                };
+                          },
+              controllerAs: 'modal',
+              templateUrl: 'templates/employeeEditForm.html',
+              parent: angular.element(document.body),
+              targetEvent: ev,
+              clickOutsideToClose:true,
+            })
+            .then(function() {
+                getEmployeesInfo();
+            })
+    };
+
+    $scope.showUpdateClient = function(ev, currentUser) {
+                $mdDialog.show({
+                  controller: function ($mdDialog, $scope, $http) {
+                                  var vm = this;
+                                  vm.currentUser = {};
+                                  vm.currentUser = currentUser;  //your task object from the ng-repeat
+
+                                  $scope.hide = function () {
+                                      $mdDialog.hide();
+                                  };
+                                  $scope.cancel = function () {
+                                      $mdDialog.cancel();
+                                  };
+                                  $scope.UpdateInfo = function () {
+                                      $http.post('/clients', {
+                                          "id": currentUser.id,
+                                          "name": currentUser.name,
+                                          "surname": currentUser.surname,
+                                          "phone": currentUser.phone,
+                                          "email": currentUser.email
+                                      }).success(function (data) {
+                                          $mdDialog.hide();
+                                      });
+                                  };
+                              },
+                  controllerAs: 'modal',
+                  templateUrl: 'templates/clientEditForm.html',
+                  parent: angular.element(document.body),
+                  targetEvent: ev,
+                  clickOutsideToClose:true,
+                })
+                .then(function() {
+                    getClientsInfo();
+                })
+        };
+
     $scope.currentUser = {};
     $scope.editInfo = function (info) {
         $scope.currentUser = info;
         $('#empForm').slideUp();
         $('#editForm').slideToggle();
-    };
-
-    $scope.UpdateInfo = function (info) {
-        $http.post('/clients', {
-            "id": info.id,
-            "name": info.name,
-            "surname": info.surname,
-            "phone": info.phone,
-            "email": info.email
-        }).success(function (data) {
-            getClientsInfo();
-        });
     };
 
     $scope.deleteInfo = function (info) {
