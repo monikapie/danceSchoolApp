@@ -1,0 +1,30 @@
+<!-- Form used to add new entries of client in database -->
+<md-dialog aria-label="Insert Course Details Into Database">
+    <form ng-cloak class="form-horizontal alert alert-warning" name="courseForm" id="courseForm" ng-submit="insertCourseInfo(courseInfo)">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3 class="text-center">Insert Course Details Into Database</h3>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()" aria-label="Close"></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content class="md-dialog-content">
+            <div class="form-group">
+                <label for="cost">Course cost:</label>
+                <input type="text" name="cost" class="form-control" placeholder="Enter cost" ng-model="courseInfo.cost" autofocus required />
+            </div>
+            <div class="form-group">
+                <p class="text-danger" ng-show="courseForm.cost.$invalid && courseForm.cost.$dirty">Cost field is Empty!</p>
+            </div>
+            <div class="form-group">
+                <label for="Type">Course type:</label>
+                <input type="text" name="type" class="form-control" placeholder="Enter type" ng-model="courseInfo.type" autofocus required />
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" class="md-dialog-content">
+            <div class="form-group">
+                <button class="btn btn-warning" ng-disabled="courseForm.$invalid">Add Into Database</button>
+            </div>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

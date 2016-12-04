@@ -16,6 +16,12 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
        });
     }
 
+    function getCoursesInfo() {
+        $http.get('/courses').success(function (data) {
+            $scope.courseDetails = data;
+        })
+    }
+
     $scope.insertInfo = function (info) {
         $http.post('/clients', {
             "name": info.name,
@@ -36,6 +42,15 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
             }).success(function (data) {
                 $mdDialog.hide();
             });
+    };
+
+    $scope.insertCourseInfo = function (info) {
+        $http.post('/courses', {
+            "cost": info.cost,
+            "type": info.type
+        }).success(function (data) {
+            $mdDialog.hide();
+        })
     };
 
     $scope.showAdvancedEmployee = function(ev) {
@@ -62,6 +77,18 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
          .then(function() {
             getClientsInfo();
          })
+    };
+
+    $scope.showAdvancedCourse = function (ev) {
+        $mdDialog.show({
+            controller: "DbController",
+            templateUrl: 'templates/courseCreateForm.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        }).then(function () {
+            getCoursesInfo();
+        })
     };
 
     $scope.showUpdateEmployee = function(ev, currentUser) {
@@ -136,6 +163,40 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
                 })
         };
 
+    $scope.showUpdateCourse = function (ev, currentUser) {
+        $mdDialog.show({
+            controller: function ($mdDialog, $scope, $http) {
+                var vm = this;
+                vm.currentUser = {};
+                vm.currentUser = currentUser;  //your task object from the ng-repeat
+
+                $scope.hide = function () {
+                    $mdDialog.hide();
+                };
+                $scope.cancel = function () {
+                    $mdDialog.cancel();
+                };
+                $scope.UpdateCourseInfo = function () {
+                    $http.post('/courses', {
+                        "id": currentUser.id,
+                        "cost": currentUser.cost,
+                        "type": currentUser.type
+                    }).success(function (data) {
+                        $mdDialog.hide();
+                    });
+                };
+            },
+            controllerAs: 'modal',
+            templateUrl: 'templates/courseEditForm.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        })
+            .then(function () {
+                getClientsInfo();
+            })
+    };
+
     $scope.currentUser = {};
     $scope.editInfo = function (info) {
         $scope.currentUser = info;
@@ -155,16 +216,32 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
         })
     };
 
+    $scope.deleteCourseInfo = function (info) {
+        $http.delete('/courses/' + info.id, {
+            "id": info.id
+        }).success(function (data) {
+            getCoursesInfo();
+        })
+    };
+
     $scope.selectChanged = function () {
         console.log("Changes");
         if ($scope.tables == "clients") {
             $('#employees-table').css('display', 'none');
-            $('#clients-table').slideToggle();
+            $('#courses-table').css('display', 'none');
             getClientsInfo();
+            $('#clients-table').slideToggle();
         }else if($scope.tables == "employees"){
             $('#clients-table').css('display', 'none');
-            $('#employees-table').slideToggle();
+            $('#courses-table').css('display', 'none');
             getEmployeesInfo();
+            $('#employees-table').slideToggle();
+        }else if($scope.tables == "courses"){
+            $('#employees-table').css('display', 'none');
+            $('#clients-table').css('display', 'none');
+            getCoursesInfo();
+            $('#courses-table').slideToggle();
+
         }
     };
 
