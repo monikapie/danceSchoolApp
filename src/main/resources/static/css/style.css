@@ -139,6 +139,11 @@ section{
     width: 60%;
     height: auto;
 }
+#mainlogo{
+    margin-bottom: 30px;
+    width: 100%;
+    height: auto;
+}
 <!-- sidebar -->
 #wrapper {
     padding-left: 0;

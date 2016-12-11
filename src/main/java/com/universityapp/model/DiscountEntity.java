@@ -30,6 +30,6 @@ public class DiscountEntity extends AbstractEntity{
     @NotNull
     private Integer value;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "discount")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "discountId")
     private Set<CardEntity> cards;
 }

@@ -30,9 +30,11 @@ public class TeamEntity extends AbstractEntity{
     @NotNull
     private String stage;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private CourseEntity course;
+    @Column(name = "course_id")
+    private Long courseId;
+//    @ManyToOne
+//    @JoinColumn(name = "course_id")
+//    private CourseEntity course;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "group_client",
@@ -40,6 +42,6 @@ public class TeamEntity extends AbstractEntity{
             inverseJoinColumns = { @JoinColumn(name = "client_id") })
     private Set<ClientEntity> clients = new HashSet<>();
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "teamId")
     private Set<PlanEntity> plans = new HashSet<>();
 }

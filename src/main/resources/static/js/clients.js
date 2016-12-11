@@ -8,19 +8,57 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
         $http.get('/clients').success(function (data) {
             $scope.details = data;
         });
-    }
+    };
 
     function getEmployeesInfo() {
        $http.get('/employees').success(function (data) {
             $scope.details2 = data;
        });
-    }
+    };
 
     function getCoursesInfo() {
         $http.get('/courses').success(function (data) {
             $scope.courseDetails = data;
         })
-    }
+    };
+
+    var monday = [];
+    var tuesday = [];
+    var wednesday = [];
+    var thursday = [];
+    var friday = [];
+    function checkDayOfWeek(item, index){
+
+             switch (item.dayOfWeek) {
+                 case "Monday":
+                     monday.push(item)
+                     break;
+                 case "Tuesday":
+                     tuesday.push(item)
+                     break;
+                 case "Wednesday":
+                     wednesday.push(item)
+                     break;
+                 case "Thursday":
+                     thursday.push(item)
+                     break;
+                 case "Friday":
+                     friday.push(item)
+                     break;
+             }
+
+         };
+
+    $scope.getPlanInfo = function() {
+                $http.get('/plans').success(function (data) {
+                    data.forEach(checkDayOfWeek);
+                    $scope.monday = monday;
+                    $scope.tuesday = tuesday;
+                    $scope.wednesday = wednesday;
+                    $scope.thursday = thursday;
+                    $scope.friday = friday;
+                });
+            };
 
     $scope.insertInfo = function (info) {
         $http.post('/clients', {
@@ -56,7 +94,7 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
     $scope.showAdvancedEmployee = function(ev) {
         $mdDialog.show({
           controller: "DbController",
-          templateUrl: 'templates/employeeCreateForm.html',
+          templateUrl: '../templates/employeeCreateForm.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose:true,
@@ -69,7 +107,7 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
     $scope.showAdvancedClient = function(ev) {
          $mdDialog.show({
             controller: "DbController",
-            templateUrl: 'templates/clientCreateForm.html',
+            templateUrl: '../templates/clientCreateForm.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose:true,
@@ -82,7 +120,7 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
     $scope.showAdvancedCourse = function (ev) {
         $mdDialog.show({
             controller: "DbController",
-            templateUrl: 'templates/courseCreateForm.html',
+            templateUrl: '../templates/courseCreateForm.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose: true
@@ -117,7 +155,7 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
                                 };
                           },
               controllerAs: 'modal',
-              templateUrl: 'templates/employeeEditForm.html',
+              templateUrl: '../templates/employeeEditForm.html',
               parent: angular.element(document.body),
               targetEvent: ev,
               clickOutsideToClose:true,
@@ -153,7 +191,7 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
                                   };
                               },
                   controllerAs: 'modal',
-                  templateUrl: 'templates/clientEditForm.html',
+                  templateUrl: '../templates/clientEditForm.html',
                   parent: angular.element(document.body),
                   targetEvent: ev,
                   clickOutsideToClose:true,
@@ -187,7 +225,7 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
                 };
             },
             controllerAs: 'modal',
-            templateUrl: 'templates/courseEditForm.html',
+            templateUrl: '../templates/courseEditForm.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose: true
@@ -244,5 +282,64 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
 
         }
     };
+
+        $scope.showCourseDetails = function(ev, currentPlan) {
+                $mdDialog.show({
+                  controller: function ($mdDialog, $scope, $http) {
+                                  var vm = this;
+                                  vm.currentPlan = {};
+                                  vm.currentPlan = currentPlan;  //your task object from the ng-repeat
+
+                                  $http.get('/teams/'+currentPlan.teamId).success(function (data) {
+                                     $scope.teamDetails = data;
+                                     $http.get('/courses/'+data.courseId).success(function (data2) {
+                                        $scope.courseDetails = data2;
+                                     });
+                                  });
+
+                                  $scope.hide = function () {
+                                      $mdDialog.hide();
+                                  };
+                                  $scope.cancel = function () {
+                                      $mdDialog.cancel();
+                                  };
+                              },
+                  controllerAs: 'modal',
+                  templateUrl: '../templates/courseDetailForm.html',
+                  parent: angular.element(document.body),
+                  targetEvent: ev,
+                  clickOutsideToClose:true,
+                })
+                .then(function() {
+                })
+        };
+
+        $scope.showEmpContracts = function(ev, currentEmployee) {
+                        $mdDialog.show({
+                          controller: function ($mdDialog, $scope, $http) {
+                                          var vm = this;
+                                          vm.currentEmployee = {};
+                                          vm.currentEmployee = currentEmployee;  //your task object from the ng-repeat
+
+                                          $http.get('/contracts/employee/'+currentEmployee.id).success(function (data) {
+                                             $scope.contracts = data;
+                                          });
+
+                                          $scope.hide = function () {
+                                              $mdDialog.hide();
+                                          };
+                                          $scope.cancel = function () {
+                                              $mdDialog.cancel();
+                                          };
+                                      },
+                          controllerAs: 'modal',
+                          templateUrl: '../templates/contracts.html',
+                          parent: angular.element(document.body),
+                          targetEvent: ev,
+                          clickOutsideToClose:true,
+                        })
+                        .then(function() {
+                        })
+                };
 
 }]);

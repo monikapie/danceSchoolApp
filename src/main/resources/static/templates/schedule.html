@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="crudApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <!-- Include jQuery library -->
+    <script src="../js/jQuery/jquery-3.1.1.min.js"></script>
+    <!-- Include AngularJS library -->
+    <script src="../lib/angular/angular.min.js"></script>
+    <!-- Include Bootstrap Javascript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+</head>
+<body>
+<div class="container wrapper container-fluid" ng-controller="DbController">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">Dance App</a>
+                </li>
+                <li>
+                    <a href="../index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a>
+                </li>
+                <li>
+                    <a href="../templates/tables.html"><span class="glyphicon glyphicon-list white" aria-hidden="true"></span>&nbsp;Tables</a>
+                </li>
+                <li>
+                    <a href="../templates/schedule.html"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>&nbsp;Schedule</a>
+                </li>
+                <li>
+                    <a href="../templates/about.html"><span class="glyphicon glyphicon-info-sign white" aria-hidden="true"></span>&nbsp;About</a>
+                </li>
+                <li>
+                    <a href="../templates/contact.html"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="span10">
+                <h1 class="text-center"><img id="logo" src="../dance.jpg"/></h1>
+                <div>
+                    <div id="clients-table">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Monday</th>
+                                </tr>
+                                <tr ng-repeat="class in monday">
+                                    <td ng-click="showCourseDetails($event,class)"><span>Team: {{class.teamId}}
+                                        </br>Classroom: {{class.classroomId}}
+                                        </br>Start: {{class.startTime}}
+                                        </br>End: {{class.endTime}}
+                                    </span></td>
+                                </tr>
+                            </table>
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Tuesday</th>
+                                </tr>
+                                <tr ng-repeat="class2 in tuesday">
+                                    <td ng-click="showCourseDetails($event,class2)"><span>Team: {{class2.teamId}}
+                                        </br>Classroom: {{class2.classroomId}}
+                                        </br>Start: {{class2.startTime}}
+                                        </br>End: {{class2.endTime}}
+                                    </span></td>
+                                </tr>
+                            </table>
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Wendesday</th>
+                                </tr>
+                                </tr>
+                                <tr ng-click="showCourseDetails($event,class3)" ng-repeat="class3 in wednesday ">
+                                    <td><span>Team: {{class3.teamId}}
+                                        </br>Classroom: {{class3.classroomId}}
+                                        </br>Start: {{class3.startTime}}
+                                        </br>End: {{class3.endTime}}
+                                    </span></td>
+                                </tr>
+                            </table>
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Thursday</th>
+                                </tr>
+                                <tr ng-click="showCourseDetails($event,class4)" ng-repeat="class4 in thursday">
+                                    <td><span>Team: {{class4.teamId}}
+                                        </br>Classroom: {{class4.classroomId}}
+                                        </br>Start: {{class4.startTime}}
+                                        </br>End: {{class4.endTime}}
+                                    </span></td>
+                                </tr>
+                            </table>
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Friday</th>
+                                </tr>
+                                <tr ng-click="showCourseDetails($event,class5)" ng-repeat="class5 in friday">
+                                    <td><span>Team: {{class5.teamId}}
+                                        </br>Classroom: {{class5.classroomId}}
+                                        </br>Start: {{class5.startTime}}
+                                        </br>End: {{class5.endTime}}
+                                    </span></td>
+                                </tr>
+                            </table>
+                            </br>
+                            <button class="btn btn-warning" ng-click="getPlanInfo()" title="Show Plan">Show Plan</button></br>
+                        </div>
+                    </div>
+                    <div class="navbar navbar-default navbar-bottom">
+                        <div class="container">
+                            <p class="navbar-text pull-left">2016 Monika Pietyszuk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/clients.js"></script>
+</body>
+</html>

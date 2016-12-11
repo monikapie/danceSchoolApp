@@ -34,6 +34,7 @@ public class ContractEntity extends AbstractEntity{
     @NotNull
     private Date startDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "end_date")
     private Date endDate;
 
@@ -43,8 +44,11 @@ public class ContractEntity extends AbstractEntity{
     @Column
     private String position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
-    private EmployeeEntity employee;
+    @Column(name = "employee_id")
+    private Long employeeId;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "employee_id")
+//    private EmployeeEntity employee;
 
 }

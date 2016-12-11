@@ -33,7 +33,7 @@
                 <th>Position</th>
                 <th></th><th></th>
             </tr>
-            <tr ng-repeat="detail2 in details2| filter:search_query">
+            <tr ng-click="showEmpContracts($event,detail2)" ng-repeat="detail2 in details2| filter:search_query">
                 <td><span>{{detail2.id}}</span></td>
                 <td>{{detail2.name}}</td>
                 <td>{{detail2.surname}}</td>

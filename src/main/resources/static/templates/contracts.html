@@ -1,0 +1,28 @@
+<!-- Form used to update new entries of client in database -->
+<md-dialog aria-label="Course Details">
+    <form ng-cloak class="form-horizontal alert alert-warning" name="courseEditForm" id="courseEditForm">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3 class="text-center">Contracts</h3>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()" aria-label="Close"></md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <table class="table table-hover">
+                <tr>
+                    <th>Id</th>
+                    <th>Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+                <tr ng-repeat="contract in contracts| filter:search_query">
+                    <td><span>{{contract.id}}</span></td>
+                    <td>{{contract.type}}</td>
+                    <td>{{contract.startDate}}</td>
+                    <td>{{contract.endDate}}</td>
+                </tr>
+            </table>
+        </md-dialog-content>
+    </form>
+</md-dialog>

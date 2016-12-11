@@ -41,7 +41,7 @@ public class CourseEntity extends AbstractEntity{
     @Column(name = "trainer_id")
     private Long trainerId;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "courseId")
     private Set<TeamEntity> teams = new HashSet<>();
 
     public CourseEntity(String type, Long cost, Long trainer){

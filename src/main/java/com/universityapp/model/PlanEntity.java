@@ -39,11 +39,17 @@ public class PlanEntity extends AbstractEntity{
     @NotNull
     private Date endTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "classroom_id", nullable = false)
-    private ClassroomEntity classroom;
+    @Column(name = "classroom_id")
+    private Long classroomId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id", nullable = false)
-    private TeamEntity team;
+    @Column(name = "team_id")
+    private Long teamId;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "classroom_id", nullable = false)
+//    private ClassroomEntity classroom;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "team_id", nullable = false)
+//    private TeamEntity team;
 }

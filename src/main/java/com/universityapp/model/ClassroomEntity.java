@@ -32,6 +32,6 @@ public class ClassroomEntity extends AbstractEntity{
     @Column(name = "max_people")
     private Integer maxPeople;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "classroom")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "classroomId")
     private Set<PlanEntity> plans;
 }

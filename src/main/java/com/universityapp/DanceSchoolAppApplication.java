@@ -8,7 +8,7 @@ import com.universityapp.model.EmployeeEntity;
 import com.universityapp.service.ClientService;
 import com.universityapp.service.CourseService;
 import com.universityapp.service.EmployeeService;
-import com.universityapp.terminal.HeadersChooser;
+//import com.universityapp.terminal.HeadersChooser;
 import com.universityapp.terminal.RestTemplateService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

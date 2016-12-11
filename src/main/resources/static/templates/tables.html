@@ -1,0 +1,73 @@
+<html ng-app="crudApp">
+<head>
+    <title>DanceApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <!-- Include jQuery library -->
+    <script src="../js/jQuery/jquery-3.1.1.min.js"></script>
+    <!-- Include AngularJS library -->
+    <script src="../lib/angular/angular.min.js"></script>
+    <!-- Include Bootstrap Javascript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+</head>
+<body>
+<div class="container wrapper container-fluid" ng-controller="DbController">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">Dance App</a>
+                </li>
+                <li>
+                    <a href="../index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a>
+                </li>
+                <li>
+                    <a href="../templates/tables.html"><span class="glyphicon glyphicon-list white" aria-hidden="true"></span>&nbsp;Tables</a>
+                </li>
+                <li>
+                    <a href="../templates/schedule.html"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>&nbsp;Schedule</a>
+                </li>
+                <li>
+                    <a href="../templates/about.html"><span class="glyphicon glyphicon-info-sign white" aria-hidden="true"></span>&nbsp;About</a>
+                </li>
+                <li>
+                    <a href="../templates/contact.html"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="span10">
+                <h1 class="text-center"><img id="logo" src="../dance.jpg"/></h1>
+                <div>
+                    <div id="select" layout="row" layout-align="center center" style="width:200%;">
+                        <md-select ng-change="selectChanged()" ng-model="tables" placeholder="Table" class="md-no-underline"
+                                   style="width:200%;">
+                            <md-option value="clients">Clients</md-option>
+                            <md-option value="employees">Employees</md-option>
+                            <md-option value="courses">Courses</md-option>
+                        </md-select>
+                    </div>
+                    <div ng-include src="'../templates/clientForm.html'"></div>
+                    <div ng-include src="'../templates/employeeForm.html'"></div>
+                    <div ng-include src="'../templates/courseForm.html'"></div>
+                    <div class="navbar navbar-default navbar-bottom">
+                        <div class="container">
+                            <p class="navbar-text pull-left">2016 Monika Pietyszuk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include controller -->
+    <script src="../js/clients.js"></script>
+</body>
+</html>

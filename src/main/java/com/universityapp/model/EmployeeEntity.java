@@ -46,7 +46,7 @@ public class EmployeeEntity extends AbstractEntity{
     @Length(max = 30)
     private String position;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employeeId")
     private Set<ContractEntity> contracts;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "trainerId")

@@ -37,7 +37,10 @@ public class CardEntity extends AbstractEntity{
     @JoinColumn(name = "client_id")
     private ClientEntity client;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "discount_id", nullable = false)
-    private DiscountEntity discount;
+    @Column(name = "discount_id")
+    private Long discountId;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "discount_id", nullable = false)
+//    private DiscountEntity discount;
 }
