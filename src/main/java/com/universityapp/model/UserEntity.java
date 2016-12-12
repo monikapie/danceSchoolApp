@@ -24,7 +24,14 @@ public class UserEntity extends AbstractEntity implements UserDetails{
     @Column(name = "password", nullable=false)
     private String password;
 
+    public UserEntity(String username, String password, Boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+    }
+
     @Column
+
     private Boolean enabled;
 
     @ManyToMany

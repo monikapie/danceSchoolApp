@@ -189,6 +189,18 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
                                           $mdDialog.hide();
                                       });
                                   };
+
+                                  $scope.createCard = function(){
+                                        var currentTime = new Date();
+                                        var endTime = new Date();
+                                        endTime.setDate(endTime.getDate() + 30);
+                                        $http.post('/cards', {
+                                                   "startDate": currentTime,
+                                                    "endDate": endTime,
+                                                    "clientId": currentUser.id,
+                                                    });
+                                  };
+
                               },
                   controllerAs: 'modal',
                   templateUrl: '../templates/clientEditForm.html',
@@ -341,5 +353,33 @@ crudApp.controller("DbController", ['$scope', '$http', '$mdDialog', function ($s
                         .then(function() {
                         })
                 };
+
+        $scope.showClientCards = function(ev, currentClient) {
+                                $mdDialog.show({
+                                  controller: function ($mdDialog, $scope, $http) {
+                                                  var vm = this;
+                                                  vm.currentClient = {};
+                                                  vm.currentClient = currentClient;  //your task object from the ng-repeat
+
+                                                  $http.get('/cards/client/'+currentClient.id).success(function (data) {
+                                                     $scope.cards = data;
+                                                  });
+
+                                                  $scope.hide = function () {
+                                                      $mdDialog.hide();
+                                                  };
+                                                  $scope.cancel = function () {
+                                                      $mdDialog.cancel();
+                                                  };
+                                              },
+                                  controllerAs: 'modal',
+                                  templateUrl: '../templates/cards.html',
+                                  parent: angular.element(document.body),
+                                  targetEvent: ev,
+                                  clickOutsideToClose:true,
+                                })
+                                .then(function() {
+                                });
+                        };
 
 }]);

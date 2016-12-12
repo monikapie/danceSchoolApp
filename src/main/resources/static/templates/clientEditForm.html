@@ -26,6 +26,9 @@
                     <label for="Email">Email:</label>
                     <input type="email" class="form-control" ng-model="modal.currentUser.email" value="{{modal.currentUser.email}}">
                 </div>
+                <div class="form-group">
+                    <button class="btn btn-info" ng-disabled="empForm.$invalid" ng-click="createCard()">Create card</button>
+                </div>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row" class="md-dialog-content">

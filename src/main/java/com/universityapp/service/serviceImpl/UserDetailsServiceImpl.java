@@ -2,6 +2,7 @@ package com.universityapp.service.serviceImpl;
 
 import com.universityapp.model.UserEntity;
 import com.universityapp.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,13 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("customUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService{
 
+    @Autowired
     private UserService userService;
 
     @Transactional(readOnly=true)
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
         UserEntity user = userService.findByUsername(username);
-        System.out.println("User : "+user);
         if(user==null){
             System.out.println("User not found");
             throw new UsernameNotFoundException("Username not found");

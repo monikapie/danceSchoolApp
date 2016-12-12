@@ -33,7 +33,7 @@
                 <th>Position</th>
                 <th></th><th></th>
             </tr>
-            <tr ng-click="showEmpContracts($event,detail2)" ng-repeat="detail2 in details2| filter:search_query">
+            <tr  ng-repeat="detail2 in details2| filter:search_query">
                 <td><span>{{detail2.id}}</span></td>
                 <td>{{detail2.name}}</td>
                 <td>{{detail2.surname}}</td>
@@ -44,6 +44,8 @@
                             class="glyphicon glyphicon-edit"></span></button>
                     <button class="btn btn-danger" title="Delete" ng-click="deleteEmployeeInfo(detail2)"><span
                             class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-info" title="Info" ng-click="showEmpContracts($event,detail2)"><span
+                            class="glyphicon glyphicon-info-sign"></span></button>
                 </td>
             </tr>
         </table>

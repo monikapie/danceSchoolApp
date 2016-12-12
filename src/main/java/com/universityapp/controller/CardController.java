@@ -1,11 +1,13 @@
 package com.universityapp.controller;
 
 import com.universityapp.model.CardEntity;
+import com.universityapp.model.ClientEntity;
 import com.universityapp.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by pietyszukm on 11.12.2016.
@@ -24,6 +26,11 @@ public class CardController{
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public CardEntity getCardWithId(@PathVariable Long id){
         return cardService.findById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/client/{id}")
+    public List<CardEntity> getCardWithClientId(@PathVariable Long id){
+        return cardService.findByClientId(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

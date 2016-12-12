@@ -33,7 +33,7 @@
                 <th>Email Address</th>
                 <th></th><th></th>
             </tr>
-            <tr ng-repeat="detail in details| filter:search_query">
+            <tr ng-repeat="detail in details" >
                 <td><span>{{detail.id}}</span></td>
                 <td>{{detail.name}}</td>
                 <td>{{detail.surname}}</td>
@@ -44,6 +44,8 @@
                             class="glyphicon glyphicon-edit"></span></button>
                     <button class="btn btn-danger" title="Delete" ng-click="deleteInfo(detail)"><span
                             class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-info" title="Info" ng-click="showClientCards($event,detail)"><span
+                            class="glyphicon glyphicon-info-sign"></span></button>
                 </td>
             </tr>
         </table>

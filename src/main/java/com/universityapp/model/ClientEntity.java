@@ -47,8 +47,8 @@ public class ClientEntity extends AbstractEntity implements Serializable{
     @Column(name = "birth_date")
     private Date birthDate;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "client", cascade = CascadeType.ALL)
-    private CardEntity card;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clientId", cascade = CascadeType.ALL)
+    private Set<CardEntity> cards;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -62,12 +62,11 @@ public class ClientEntity extends AbstractEntity implements Serializable{
         this.surname = surname;
     }
 
-    public ClientEntity(String name, String surname, Long phone, String email, Date birthDate, CardEntity card) {
+    public ClientEntity(String name, String surname, Long phone, String email, Date birthDate) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
         this.birthDate = birthDate;
-        this.card = card;
     }
 }

@@ -33,9 +33,8 @@ public class CardEntity extends AbstractEntity{
     @NotNull
     private Date endDate;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
-    private ClientEntity client;
+    @Column(name = "client_id")
+    private Long clientId;
 
     @Column(name = "discount_id")
     private Long discountId;

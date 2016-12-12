@@ -1,8 +1,13 @@
 package com.universityapp.controller;
 
+import com.universityapp.enums.RoleType;
 import com.universityapp.model.UserEntity;
+import com.universityapp.repository.RoleRepository;
 import com.universityapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -13,32 +18,39 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/users")
 public class UserController{
+    private UserService service;
     @Autowired
-    private UserService userService;
+    private RoleRepository roleRepository;
+    @Autowired
+    private PasswordEncoder encoder;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Collection<UserEntity> getAllTeams(){
-        return userService.getList();
+    @Autowired
+    public UserController(UserService service) {
+        super();
+        this.service = service;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public UserEntity getTeamWithId(@PathVariable Long id){
-        return userService.findById(id);
+    @RequestMapping(value = "/currentUser", method = RequestMethod.GET)
+    public UserEntity getCurrentlyLoggedUser(){
+        return service.getCurrentUser();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public void addTeam(@RequestBody UserEntity input){
-        userService.save(input);
+    @RequestMapping(value = "/currentUser/authorities")
+    public Collection<? extends GrantedAuthority> getLoggedUserAuthorities(){
+        return service.getCurrentUserAuthorities();
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public void updateTeam(@PathVariable(value = "id") Long id, @RequestBody UserEntity input){
-        userService.save(input);
-    }
+    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UserEntity registerNewUser(@RequestBody UserEntity user) {
+        boolean doesUserExist = service.doesUserExist(user.getUsername());
+        if(!doesUserExist) {
+            UserEntity newUser = new UserEntity(user.getUsername(), encoder.encode(user.getPassword()), true);
+            newUser.getRoles().add(roleRepository.findByRole(RoleType.USER));
+            service.save(newUser);
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public void deleteTeam(@PathVariable(value = "id") Long id){
-        UserEntity userEntity = userService.findById(id);
-        userService.delete(userEntity);
+            return newUser;
+        } else {
+            return null;
+        }
     }
 }

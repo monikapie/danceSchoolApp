@@ -32,11 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-//                .antMatchers("/templates/tables.html").authenticated()
+                //.antMatchers("/templates/tables.html").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/templates/login-form.html").failureUrl("/templates/login-form.html").successForwardUrl("/user")
+                .loginPage("/templates/login-form.html").failureUrl("/templates/login-form.html").successForwardUrl("/templates/tables.html")
                 .permitAll()
                 .and()
                 .logout()
